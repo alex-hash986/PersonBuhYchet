@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DATABASE_URL: sqlite+aiosqlite:////data/smartbudget.db
+    volumes:
+      - smartbudget_data:/data
+
+volumes:
+  smartbudget_data:
